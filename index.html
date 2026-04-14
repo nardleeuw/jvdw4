@@ -167,11 +167,16 @@ ul  { list-style: none; }
   display: block;
   width: 22px;
   height: 2px;
-  background: var(--on-surface);
+  background: #fff;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
+.nav.scrolled .nav-toggle span {
+  background: var(--on-surface);
+}
+
+.nav-toggle.active span        { background: var(--on-surface); }
 .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
 .nav-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
@@ -1458,24 +1463,44 @@ footer {
     background: var(--surface);
     flex-direction: column;
     justify-content: center;
-    gap: 2rem;
-    z-index: 499;
+    align-items: center;
+    gap: 2.25rem;
+    z-index: 498;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.25s ease;
+    transform: translateY(-12px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
   }
 
   .nav-links.open {
     opacity: 1;
     pointer-events: all;
+    transform: translateY(0);
   }
 
   .nav-links a {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
+    font-weight: 700;
     letter-spacing: 0.04em;
+    color: var(--on-surface) !important;
   }
 
-  .nav-toggle { display: flex; }
+  .nav-links .nav-cta {
+    font-size: 1rem;
+  }
+
+  /* Hamburger sits above the open overlay */
+  .nav-toggle {
+    display: flex;
+    z-index: 500;
+    position: relative;
+  }
+
+  /* When menu is open, bars go dark (overlay is light) */
+  .nav-links.open ~ * .nav-toggle span,
+  .nav-toggle.active span {
+    background: var(--on-surface);
+  }
 
   /* Hero */
   .hero {
@@ -1705,7 +1730,7 @@ footer {
     </div>
 
     <div class="gallery-cta reveal reveal-d2">
-      <a href="https://www.instagram.com/jongensvandewitbrouwerij" target="_blank" rel="noopener" class="btn-primary">
+      <a href="https://www.instagram.com/jongensvandewit/" target="_blank" rel="noopener" class="btn-primary">
         Bekijk alle foto's
       </a>
     </div>
