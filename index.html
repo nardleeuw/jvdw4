@@ -1457,19 +1457,24 @@ footer {
     padding: 0.75rem 1.25rem;
   }
 
+  /* Full-screen overlay — must sit ABOVE the nav pill (z-index 500) */
   .nav-links {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
     background: var(--surface);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2.25rem;
-    z-index: 498;
+    gap: 2.5rem;
+    z-index: 600;
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-12px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    transform: translateY(-10px);
+    transition: opacity 0.28s ease, transform 0.28s ease;
   }
 
   .nav-links.open {
@@ -1479,25 +1484,25 @@ footer {
   }
 
   .nav-links a {
-    font-size: 1.25rem;
+    font-size: 1.375rem;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.02em;
     color: var(--on-surface) !important;
   }
 
   .nav-links .nav-cta {
     font-size: 1rem;
+    padding: 0.75rem 2.5rem;
   }
 
-  /* Hamburger sits above the open overlay */
+  /* Toggle sits above the overlay */
   .nav-toggle {
     display: flex;
-    z-index: 500;
     position: relative;
+    z-index: 601;
   }
 
-  /* When menu is open, bars go dark (overlay is light) */
-  .nav-links.open ~ * .nav-toggle span,
+  /* Bars go dark when menu is open (overlay is light) */
   .nav-toggle.active span {
     background: var(--on-surface);
   }
@@ -1600,9 +1605,10 @@ footer {
 
   <ul class="nav-links" id="nav-links" role="list">
     <li><a href="#bieren">Bieren</a></li>
+    <li><a href="#gallery">Foto's</a></li>
     <li><a href="#brouwerij">Brouwerij</a></li>
     <li><a href="#events">Events</a></li>
-    <li><a href="#contact" class="nav-cta">Reserveer</a></li>
+    <li><a href="#locatie" class="nav-cta">Reserveer</a></li>
   </ul>
 </nav>
 
